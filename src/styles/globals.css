@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--bg-gradient-from: #4c1d95; /* purple-900 */
+	--bg-gradient-to: #5b21b6; /* violet-800 */
+	--border-current-plan: #793ef9; /* indigo-400 */
+	--border-popular-plan: #9f5ff9; /* purple-400 */
+	--border-other-plan: #581c87; /* purple-800 */
+	--bg-current-plan: #793ef9; /* indigo-500 */
+	--bg-popular-plan: #9f5ff9; /* purple-500 */
+	--text-secondary: #a78bfa; /* violet-300 */
+}
+
+/* Theme-specific variables */
+.purple-theme {
+	--bg-gradient-from: #4c1d95; /* purple-900 */
+	--bg-gradient-to: #5b21b6; /* violet-800 */
+	--border-current-plan: #793ef9; /* indigo-400 */
+	--border-popular-plan: #9f5ff9; /* purple-400 */
+	--border-other-plan: #581c87; /* purple-800 */
+}
+
+.gray-theme {
+	--bg-gradient-from: #111827; /* gray-900 */
+	--bg-gradient-to: #1f2937; /* gray-800 */
+	--border-current-plan: #6b7280; /* gray-500 */
+	--border-popular-plan: #6b7280; /* gray-500 */
+	--border-other-plan: #4b5563; /* gray-600 */
+	--bg-current-plan: #6b7280; /* gray-500 */
+	--bg-popular-plan: #6b7280; /* gray-500 */
+	--text-secondary: #9ca3af; /* gray-400 */
+}
+
+/* Apply gradient background to all pages */
+body {
+	@apply min-h-screen;
+	background: linear-gradient(to bottom, var(--bg-gradient-from), var(--bg-gradient-to));
+	background-attachment: fixed;
+}
+
+/* Smooth transitions for theme changes */
+body, 
+.bg-gradient-to-b,
+[class*='bg-opacity'] {
+	transition: background-color 0.3s ease-in-out, 
+				background-image 0.3s ease-in-out,
+				color 0.3s ease-in-out;
+}
+
+/* Card styles */
+.card {
+	@apply bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-6;
+}
+
+/* Utility classes */
+.bg-theme-gradient {
+	background: linear-gradient(to bottom, var(--bg-gradient-from), var(--bg-gradient-to));
+	background-attachment: fixed;
+}
+
+.text-gradient {
+	@apply bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600;
+}
+
+/* Container utilities */
+.container {
+	@apply px-4 mx-auto max-w-7xl;
+}
+
+/* Theme transitions */
+*, *::before, *::after {
+	transition-property: background-color, border-color, color, fill, stroke;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 150ms;
+}
+
+/* Base styles */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Grid pattern background */
+.bg-grid-pattern {
+	background-size: 40px 40px;
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+					linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+	background-attachment: fixed;
+}
+
+/* Dark mode overrides */
+.dark-mode {
+	--bg-gradient-from: #111827; /* gray-900 */
+	--bg-gradient-to: #1f2937; /* gray-800 */
+}
+
+/* Animations */
+@keyframes float {
+	0% {
+		transform: translateY(0) translateX(0);
+		opacity: 0;
+	}
+	25% {
+		opacity: 0.5;
+	}
+	50% {
+		transform: translateY(-100px) translateX(100px);
+		opacity: 0.8;
+	}
+	75% {
+		opacity: 0.5;
+	}
+	100% {
+		transform: translateY(-200px) translateX(0);
+		opacity: 0;
+	}
+}
+
+.animate-float {
+	animation: float 10s ease-in-out infinite;
+}
+
+@keyframes wave {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+.animate-wave {
+	animation: wave 20s linear infinite;
+}
